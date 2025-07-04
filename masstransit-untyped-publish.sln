@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "masstransit-untyped-publish", "masstransit-untyped-publish.csproj", "{FF6B55DB-251B-AB8F-49B0-BE1FB6B4670C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF6B55DB-251B-AB8F-49B0-BE1FB6B4670C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF6B55DB-251B-AB8F-49B0-BE1FB6B4670C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF6B55DB-251B-AB8F-49B0-BE1FB6B4670C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF6B55DB-251B-AB8F-49B0-BE1FB6B4670C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FC37BFC-AA81-4768-96C0-10B1CE865905}
+	EndGlobalSection
+EndGlobal
