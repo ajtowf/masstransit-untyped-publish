@@ -1,6 +1,8 @@
 # Overview
 What do we want to accomplish? We want a central system to be able to publish a generic payload, preferrably json, without it needing to acutally be able to construct the type in compile time. 
 
+![alt text](image-4.png)
+
 So far the only way I've accomplished this is by publishing an envelope type, that holds the event type as a stringified json, which then is deseralized in an abstract message handler that consumers needs to inherit from.
 
 The downside from this approach is that we get one exchange (MessageEnvelope) to rule them all, instead of an exchange per payload type.
@@ -18,7 +20,23 @@ System C consumes it with a strongly typed handler:
  - class PersonCreatedConsumer : IConsumer<PersonCreated>
 ```
 
-![alt text](image-4.png)
+## Alternative approach
+
+Other than the envelope approach we've also tried to construct the type in runtime, which requires the messaging system to be able construct the type in runtime instead of compile-time, but which is equally bad imo:
+
+```
+var jsonContent = envelope.Message;
+var typeName = envelope.Topic;
+
+var type = Type.GetType(typeName, throwOnError: true);
+var payload = Deserialize(type, jsonContent );
+
+using var scope = _serviceScopeFactory.CreateScope();
+var publishEndpoint = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
+await publishEndpoint.Publish(payload!, type, ctx =>{ ... });
+```
+
+# How to run the code in this repo
 
 ## Setup RabbitMQ
  - docker run -d --hostname my-rabbit --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
